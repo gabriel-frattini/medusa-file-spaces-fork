@@ -28,7 +28,7 @@ class DigitalOceanService extends AbstractFileService {
   uploadProtected(file) {
     this.updateAwsConfig();
 
-    return this.uploadFile(file, { acl: "private" });
+    return this.uploadFile(file, { acl: "public-read" });
   }
 
   uploadFile(file, options = { isProtected: false, acl: undefined }) {
