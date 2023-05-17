@@ -1,6 +1,6 @@
 {
   "name": "medusa-file-spaces-fork",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Digital Ocean Spaces file connector for Medusa",
   "main": "index.js",
   "repository": {

@@ -40,7 +40,7 @@ class DigitalOceanService extends AbstractFileService {
         }`
       : `${parsedFilename.name}-${Date.now()}${parsedFilename.ext}`;
 
-    console.log("fileKey -> ", fileKey);
+    console.log("uploadFile fileKey -> ", fileKey);
     const s3 = new aws.S3();
     const params = {
       ACL: options.acl ?? (options.isProtected ? "private" : "public-read"),
@@ -92,6 +92,7 @@ class DigitalOceanService extends AbstractFileService {
     const pass = new stream.PassThrough();
 
     const fileKey = `${fileData.name}.${fileData.ext}`;
+    console.log("getUploadStreamDescriptor fileKey -> ", fileKey);
     const params = {
       ACL: fileData.acl ?? "private",
       Bucket: this.bucket_,
@@ -113,6 +114,7 @@ class DigitalOceanService extends AbstractFileService {
 
     const s3 = new aws.S3();
 
+    console.log("getDownloadStream fileKey -> ", fileData.fileKey);
     const params = {
       Bucket: this.bucket_,
       Key: `${fileData.fileKey}`,
@@ -128,6 +130,7 @@ class DigitalOceanService extends AbstractFileService {
 
     const s3 = new aws.S3();
 
+    console.log("getPresignedDownloadUrl fileKey -> ", fileData.fileKey);
     const params = {
       Bucket: this.bucket_,
       Key: `${fileData.fileKey}`,
